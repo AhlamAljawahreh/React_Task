@@ -61,10 +61,12 @@ CREATE TABLE orders (
     id INT AUTO_INCREMENT NOT NULL,
     order_by INT NOT NULL,
     item_id INT NOT NULL,
+    store_id INT NOT NULL,
     status VARCHAR(255) NOT NULL,
     order_desc VARCHAR(255),
     is_deleted TINYINT DEFAULT 0,
     FOREIGN KEY (order_by ) REFERENCES users(id),
+    FOREIGN KEY (store_id ) REFERENCES store(id),
     FOREIGN KEY (item_id) REFERENCES item(id),
     PRIMARY KEY (id)
 ); 

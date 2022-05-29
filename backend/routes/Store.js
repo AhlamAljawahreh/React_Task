@@ -1,7 +1,7 @@
 const express = require("express");
 
 //controllers
-const { createNewStore } = require("../controllers/Store");
+const { createNewStore, getAllStores } = require("../controllers/Store");
 
 
 
@@ -20,5 +20,10 @@ storeRouter.post(
   authentication,
   authorization("CREATE_STORE"),
   createNewStore
+);
+storeRouter.get(
+  "/",
+  authentication,
+  getAllStores
 );
 module.exports = storeRouter;

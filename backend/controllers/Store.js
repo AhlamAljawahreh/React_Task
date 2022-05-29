@@ -14,14 +14,34 @@ const createNewStore = async (req, res) => {
         err: err,
       });
     }
-    res.status(200).json({
+    res.status(201).json({
       success: true,
       massage: `store ${name} created`,
       results: results,
     });
   });
 };
-
+/*************************************** */
+const getAllStores =(req,res)=>{
+ 
+   const query = `SELECT store.id,name,userName, email, password, country, phoneNumber,role FROM store INNER JOIN users ON store.owner=users.id WHERE store.is_deleted=0 ; `;
+   connection.query(query, (err, results) => {
+     if (err) {
+       return res.status(500).json({
+         success: false,
+         massage: "server error*",
+         err: err,
+       });
+     }
+     // result are the data returned by mysql server
+     res.status(200).json({
+       success: true,
+       massage: "All Stores",
+       results: results,
+     });
+ });
+ }
 module.exports = {
   createNewStore,
+  getAllStores
 };
