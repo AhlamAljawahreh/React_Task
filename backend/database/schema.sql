@@ -42,9 +42,9 @@ CREATE TABLE permissions (
 CREATE TABLE store (
     id INT AUTO_INCREMENT NOT NULL,
     name  VARCHAR(255) NOT NULL,
-    user_id INT NOT NULL,
+    owner INT NOT NULL,
     is_deleted TINYINT DEFAULT 0,
-    FOREIGN KEY (user_id ) REFERENCES users(id),
+    FOREIGN KEY (owner ) REFERENCES users(id),
     PRIMARY KEY (id)
 );
 CREATE TABLE item (
@@ -54,7 +54,6 @@ CREATE TABLE item (
     price  INT NOT NULL,
     store_id INT NOT NULL,
     is_deleted TINYINT DEFAULT 0,
-    FOREIGN KEY (store_id ) REFERENCES store(id),
     PRIMARY KEY (id)
 );
 

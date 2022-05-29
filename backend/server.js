@@ -14,12 +14,16 @@ const PORT = 5000;
 const loginRouter = require("./routes/Login");
 const usersRouter = require("./routes/User");
 const storeRouter = require("./routes/Store");
+const itemRouter = require("./routes/Item");
+
 
 
 
 app.use("/login", loginRouter);
 app.use("/users", usersRouter);
 app.use("/store", storeRouter);
+app.use("/item", itemRouter);
+
 
 
 

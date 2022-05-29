@@ -5,7 +5,6 @@ const {
   createNewUser,
 } = require("../controllers/User");
 
-const authentication = require("../middleware/authentication");
 
 const usersRouter = express.Router();
 
