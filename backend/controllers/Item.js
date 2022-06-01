@@ -24,7 +24,7 @@ const getAllItemsByStoreID = (req, res) => {
 
   let data = req.params.id;
 
-  const query = `SELECT * FROM item INNER JOIN store ON item.store_id = store.id WHERE item.is_deleted=0 AND store_id=? `;
+  const query = `SELECT * FROM item INNER JOIN store ON item.store_id = store.store_id WHERE item.is_deleted=0 AND store.store_id=? `;
 
   connection.query(query,data, (err, results) => {
     if (err) {
@@ -44,7 +44,7 @@ const getAllItemsByStoreID = (req, res) => {
 };
 const deleteItemById = (req, res) => {
 
-  const query = `UPDATE item SET is_deleted = 1   WHERE  id = ?`;
+  const query = `UPDATE item SET is_deleted = 1   WHERE  item_id = ?`;
   const data = req.params.id;
   connection.query(query, data, (err, results) => {
     if (err) {

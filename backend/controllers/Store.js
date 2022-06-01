@@ -24,7 +24,7 @@ const createNewStore = async (req, res) => {
 /*************************************** */
 const getAllStores =(req,res)=>{
  
-   const query = `SELECT store.id,name,userName, email, password, country, phoneNumber,role,image,description FROM store INNER JOIN users ON store.owner=users.id WHERE store.is_deleted=0 ; `;
+   const query = `SELECT * FROM store INNER JOIN users ON store.owner=users.user_id WHERE store.is_deleted=0 ; `;
    connection.query(query, (err, results) => {
      if (err) {
        return res.status(500).json({
@@ -41,7 +41,29 @@ const getAllStores =(req,res)=>{
      });
  });
  }
+ /*************************************** */
+const getStoreById =(req,res)=>{
+   let data = req.params.id;
+   const query = `SELECT * FROM store WHERE store_id=? AND is_deleted=0 ; `;
+   connection.query(query,data, (err, results) => {
+     if (err) {
+       return res.status(500).json({
+         success: false,
+         massage: "server error*",
+         err: err,
+       });
+     }
+     // result are the data returned by mysql server
+     res.status(200).json({
+       success: true,
+       massage: `store with id ${data}`,
+       results: results,
+     });
+ });
+ }
+ 
 module.exports = {
   createNewStore,
-  getAllStores
+  getAllStores,
+  getStoreById
 };

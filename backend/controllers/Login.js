@@ -16,7 +16,7 @@ const login = (req, res) => {
         if (err) res.json(err);
         if (response) {
           const payload = {
-            userId: results[0].id,
+            userId: results[0].user_id,
             role: results[0].role,
           };
           const options = {
@@ -30,7 +30,7 @@ const login = (req, res) => {
             success: true,
             message: "Valid login credentials",
             token,
-            userId: results[0].id,
+            userId: results[0].user_id,
             role: results[0].role,
           });
         } else {

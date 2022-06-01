@@ -52,7 +52,7 @@ export default function Home() {
                       <button
                         className="btn btn-dark"
                         onClick={() => {
-                          navigate(`/store/${item.id}`);
+                          navigate(`/store/${item.store_id}`);
                         }}
                       >
                         Visit

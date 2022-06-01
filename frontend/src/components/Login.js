@@ -35,7 +35,7 @@ const Login = () => {
             role: res.data.role,
           })
         );
-        goTo("/");
+        goTo("/home");
         window.location.reload(false);
       } else {
         toast.error(res.data.message, {

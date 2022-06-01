@@ -8,18 +8,30 @@ import Login from "./components/Login";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import Store from "./components/Store";
+import { useSelector } from "react-redux";
+import NewStore from "./components/NewStore";
+
 
 
 
 function App() {
+       const state = useSelector((state) => {
+         return {
+           isLoggedIn: state.loginReducer.isLoggedIn,
+           token: state.loginReducer.token,
+           user_id: state.loginReducer.user_id,
+           role: state.loginReducer.role,
+         };
+       });
   return (
     <div className="App ">
-      <Navigation />
+      {state.isLoggedIn ? <Navigation /> : <></>}
       <div className="Home">
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Home />} />
           <Route path="/store/:id" element={<Store />} />
+          <Route path="/new_store" element={state.role==1?<NewStore />:<></>} />
         </Routes>
       </div>
     </div>
