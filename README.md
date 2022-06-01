@@ -2,7 +2,7 @@
 
 ## 📝 Table of Contents
 
-- [About](#Database)
+- [ Database Diagram](#Database)
 - [Built Using](#built_using)
 
 ## 🧐 Database Diagram <a name = "Database"></a>
