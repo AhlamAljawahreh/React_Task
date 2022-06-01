@@ -43,6 +43,8 @@ CREATE TABLE store (
     id INT AUTO_INCREMENT NOT NULL,
     name  VARCHAR(255) NOT NULL,
     owner INT NOT NULL,
+    image VARCHAR(255) ,
+    description VARCHAR(255) NOT NULL,
     is_deleted TINYINT DEFAULT 0,
     FOREIGN KEY (owner ) REFERENCES users(id),
     PRIMARY KEY (id)
@@ -51,6 +53,7 @@ CREATE TABLE item (
     id INT AUTO_INCREMENT NOT NULL,
     title VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
+    image VARCHAR(255) ,
     price  INT NOT NULL,
     store_id INT NOT NULL,
     is_deleted TINYINT DEFAULT 0,

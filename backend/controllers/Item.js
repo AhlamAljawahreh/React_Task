@@ -1,10 +1,10 @@
 const connection = require("../database/db");
 
 const createNewItem = async (req, res) => {
-  const { title, description, price, store_id } = req.body;
+  const { title, description, price, store_id,image } = req.body;
 
-  const query = `INSERT INTO item (title, description, price , store_id) VALUES (?,?,?,?)`;
-  let data = [title, description, price, store_id];
+  const query = `INSERT INTO item (title, description, price ,image, store_id) VALUES (?,?,?,?,?)`;
+  let data = [title, description, price,image, store_id];
   connection.query(query, data, (err, results) => {
     if (err) {
       return res.status(200).json({
@@ -24,7 +24,7 @@ const getAllItemsByStoreID = (req, res) => {
 
   let data = req.params.id;
 
-  const query = `SELECT * FROM item WHERE is_deleted=0 AND store_id=? `;
+  const query = `SELECT * FROM item INNER JOIN store ON item.store_id = store.id WHERE item.is_deleted=0 AND store_id=? `;
 
   connection.query(query,data, (err, results) => {
     if (err) {
